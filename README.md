@@ -1,3 +1,7 @@
+A descriptive video about the website and how it works.
+
+https://github.com/user-attachments/assets/5f229dde-efa9-4e35-8356-068ad2d0e410
+
 
 A simple PHP web app to manage your personal collection of electronic music tracks.
 
