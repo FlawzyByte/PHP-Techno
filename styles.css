@@ -1,0 +1,270 @@
+
+.trippy-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -2;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 0, 110, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(131, 56, 236, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(58, 134, 255, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 60% 60%, rgba(6, 255, 165, 0.3) 0%, transparent 50%);
+    background-size: 200% 200%, 300% 300%, 250% 250%, 180% 180%;
+    animation: gentleLights 8s ease-in-out infinite,
+               softColorShift 12s ease-in-out infinite;
+    pointer-events: none;
+}
+
+
+.strobe-light {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: rgba(255, 255, 255, 0.02);
+    animation: softPulse 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+
+.laser-beam {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        rgba(255, 0, 255, 0.05) 20%, 
+        transparent 40%, 
+        rgba(0, 255, 255, 0.05) 60%, 
+        transparent 80%, 
+        rgba(255, 255, 0, 0.05) 100%);
+    animation: gentleSweep 15s linear infinite;
+    pointer-events: none;
+}
+
+.floating-particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { width: 20px; height: 20px; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { width: 15px; height: 15px; left: 20%; animation-delay: 1s; }
+.particle:nth-child(3) { width: 25px; height: 25px; left: 30%; animation-delay: 2s; }
+.particle:nth-child(4) { width: 18px; height: 18px; left: 40%; animation-delay: 3s; }
+.particle:nth-child(5) { width: 22px; height: 22px; left: 50%; animation-delay: 4s; }
+.particle:nth-child(6) { width: 16px; height: 16px; left: 60%; animation-delay: 5s; }
+.particle:nth-child(7) { width: 24px; height: 24px; left: 70%; animation-delay: 0.5s; }
+.particle:nth-child(8) { width: 19px; height: 19px; left: 80%; animation-delay: 1.5s; }
+.particle:nth-child(9) { width: 21px; height: 21px; left: 90%; animation-delay: 2.5s; }
+.particle:nth-child(10) { width: 17px; height: 17px; left: 5%; animation-delay: 3.5s; }
+
+
+@keyframes gentleLights {
+    0%, 100% { 
+        background-position: 0% 0%, 100% 100%, 50% 50%, 0% 100%;
+        opacity: 0.7;
+    }
+    25% { 
+        background-position: 100% 0%, 0% 100%, 100% 50%, 100% 0%;
+        opacity: 0.5;
+    }
+    50% { 
+        background-position: 50% 100%, 50% 0%, 0% 100%, 100% 50%;
+        opacity: 0.8;
+    }
+    75% { 
+        background-position: 0% 50%, 100% 50%, 50% 0%, 50% 100%;
+        opacity: 0.6;
+    }
+}
+
+@keyframes softColorShift {
+    0% { filter: hue-rotate(0deg) brightness(1) saturate(1); }
+    25% { filter: hue-rotate(30deg) brightness(1.05) saturate(1.1); }
+    50% { filter: hue-rotate(60deg) brightness(0.98) saturate(0.95); }
+    75% { filter: hue-rotate(90deg) brightness(1.02) saturate(1.05); }
+    100% { filter: hue-rotate(120deg) brightness(1) saturate(1); }
+}
+
+@keyframes softPulse {
+    0%, 100% { opacity: 0.02; }
+    50% { opacity: 0.05; }
+}
+
+@keyframes gentleSweep {
+    0% { transform: translateX(-100%) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.3; }
+    90% { opacity: 0.3; }
+    100% { transform: translateX(100%) rotate(360deg); opacity: 0; }
+}
+
+@keyframes float {
+    0%, 100% { 
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { 
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+
+.search-input, .form-input {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    min-width: 200px;
+}
+
+.search-input:focus, .form-input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+}
+
+.search-btn, .form-btn, .submit-btn {
+    padding: 12px 25px;
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.search-btn:hover, .form-btn:hover, .submit-btn:hover {
+    transform: translateY(-2px);
+}
+
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #4ecdc4;
+}
+
+.message {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.message.error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.message.success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.back-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.back-link a {
+    color: #4ecdc4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-link a:hover {
+    text-decoration: underline;
+}
+
+/* Common Message Styles */
+.search-result {
+    margin: 20px 0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.search-result.success {
+    background: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    animation: searchAppear 0.5s ease-out;
+    box-shadow: 0 5px 15px rgba(212, 237, 218, 0.3);
+}
+
+.search-result.error {
+    background: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    animation: searchAppear 0.5s ease-out;
+    box-shadow: 0 5px 15px rgba(248, 215, 218, 0.3);
+}
+
+@keyframes searchAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+} 
